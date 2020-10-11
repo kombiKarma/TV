@@ -1,22 +1,49 @@
+// 1. Все поля private
+// 2. Методы, к которым нужен публичный (используются снаружи) - public
 public class TV {
-    int currentChannel;
-    int currentVolume;
+    // access modifiers (модификаторы):
+    // public - доступно всем (ото всюду)
+    // private - то, что доступно только внутри фигурных скобок класса
+    // поля объекта - приватные
+    private int currentChannel;
+    private int currentVolume;
 
-    int increaseVolume() {
-        return 0;
+    // getter'ы
+    public int getCurrentChannel() {
+        return currentChannel;
     }
-    int decreaseVolume() {
-        return 0;
+
+    public int getCurrentVolume() {
+        return currentVolume;
     }
+
+    // методы публичные
+    public int increaseVolume() {
+        currentVolume = currentVolume + 1;
+        return currentVolume;
+    }
+
+    public int decreaseVolume() {
+        currentVolume = currentVolume - 1;
+        return currentVolume;
+    }
+
     // Ctrl + Shift + Alt + левая кнопка мыши (multi-cursors)
     // Escape - выход из режима multi-cursor
-    int increaseChannel() {
-        return 0;
+    public int increaseChannel() {
+        currentChannel = currentChannel + 1;
+        return currentChannel;
     }
-    int decreaseChannel() {
-        return 0;
+
+    public int decreaseChannel() {
+        currentChannel = currentChannel - 1;
+        return currentChannel;
     }
-    int setChannel(int channel) {
-        return 0;
+
+    public int setChannel(int channel) {
+//        currentChannel = channel - expression, значение которого равно тому, что мы присвоили
+//        return currentChannel = channel;
+        currentChannel = channel;
+        return currentChannel;
     }
 }
