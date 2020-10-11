@@ -4,16 +4,27 @@ public class TV {
     // *Настройки по умолчанию*
     // 1. Если не указать значения инициализации, то будут нулевые 0, 0.0, false, null
     // 2. Если указать - то у каждого объекта они будут свои, но те, которые указали
-    private int maxVolume = 10;
-    private int minVolume = 0;
-    private int maxChannel = 10;
-    private int minChannel = 1;
+    // Alt + Enter - фикс
+    private int maxVolume;
+    private int minVolume;
+    private int maxChannel;
+    private int minChannel;
     // access modifiers (модификаторы):
     // public - доступно всем (ото всюду)
     // private - то, что доступно только внутри фигурных скобок класса
     // поля объекта - приватные
-    private int currentChannel = 1;
-    private int currentVolume = 5;
+    private int currentChannel;
+    private int currentVolume;
+
+    // Alt + Insert -> Constructor
+    public TV(int maxVolume, int minVolume, int maxChannel, int minChannel, int currentChannel, int currentVolume) {
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+        this.maxChannel = maxChannel;
+        this.minChannel = minChannel;
+        this.currentChannel = currentChannel;
+        this.currentVolume = currentVolume;
+    }
 
     // getter'ы
     public int getCurrentChannel() {
