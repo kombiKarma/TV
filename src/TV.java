@@ -1,12 +1,19 @@
 // 1. Все поля private
 // 2. Методы, к которым нужен публичный (используются снаружи) - public
 public class TV {
+    // *Настройки по умолчанию*
+    // 1. Если не указать значения инициализации, то будут нулевые 0, 0.0, false, null
+    // 2. Если указать - то у каждого объекта они будут свои, но те, которые указали
+    private int maxVolume = 10;
+    private int minVolume = 0;
+    private int maxChannel = 10;
+    private int minChannel = 1;
     // access modifiers (модификаторы):
     // public - доступно всем (ото всюду)
     // private - то, что доступно только внутри фигурных скобок класса
     // поля объекта - приватные
-    private int currentChannel;
-    private int currentVolume;
+    private int currentChannel = 1;
+    private int currentVolume = 5;
 
     // getter'ы
     public int getCurrentChannel() {
@@ -19,7 +26,8 @@ public class TV {
 
     // методы публичные
     public int increaseVolume() {
-        if (currentVolume == 10) { // договорились на 10 вместо 100, чтобы не усложнять
+        // ctrl + alt + f - создание поля
+        if (currentVolume == maxVolume) { // договорились на 10 вместо 100, чтобы не усложнять
             return currentVolume;
         }
 
@@ -29,7 +37,7 @@ public class TV {
 
     public int decreaseVolume() {
         // early exit
-        if (currentVolume == 0) {
+        if (currentVolume == minVolume) {
             return currentVolume;
         }
 
@@ -40,8 +48,8 @@ public class TV {
     // Ctrl + Shift + Alt + левая кнопка мыши (multi-cursors)
     // Escape - выход из режима multi-cursor
     public int increaseChannel() {
-        if (currentChannel == 10) { // договорились, что будет всего 10 каналов
-            currentChannel = 0;
+        if (currentChannel == maxChannel) { // договорились, что будет всего 10 каналов
+            currentChannel = minChannel;
             return currentChannel;
         }
 
@@ -50,8 +58,8 @@ public class TV {
     }
 
     public int decreaseChannel() {
-        if (currentChannel == 0) {
-            currentChannel = 10;
+        if (currentChannel == minChannel) {
+            currentChannel = maxChannel;
             return currentChannel;
         }
 
@@ -75,12 +83,12 @@ public class TV {
 //            currentChannel = channel;
 //            return currentChannel;
 //        }
-        if (channel < 0) {
+        if (channel < minChannel) {
             return currentChannel;
         }
 
         // channel >= 0
-        if (channel > 10) {
+        if (channel > maxChannel) {
             return currentChannel;
         }
 
